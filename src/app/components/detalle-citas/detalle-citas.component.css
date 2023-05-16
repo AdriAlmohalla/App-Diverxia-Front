@@ -1,0 +1,32 @@
+.center {
+  color: #fff;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cita-detalle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d7c1ce;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+button.btn {
+  background-color: #fff;
+}
+
+button.btn:hover {
+  background-color: #c5914d;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}

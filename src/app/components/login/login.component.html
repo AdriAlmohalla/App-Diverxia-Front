@@ -1,0 +1,24 @@
+<div class="center">
+  <form class="" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Nombre de usuario</label>
+      <input type="text" class="form-control" formControlName="username">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Contraseña</label>
+      <input type="password" class="form-control" formControlName="password" id="password">
+      <div class="input-group-append">
+      </div>
+    </div>
+    <input class="btn mb-2" type="submit" value="Acceder">
+    <div>
+      <span>¿Has olvidado la contraseña? </span><a [routerLink]="['/resetPassword']">Recuperala.</a>
+    </div>
+    <div>
+      <span>¿No tienes cuenta? </span><a [routerLink]="['/crearCliente']">Regístrate.</a>
+    </div>
+  </form>
+  <div *ngIf="hasError" class="error">
+    <p class="mensajeError">Error en usuario y/o contraseña</p>
+  </div>
+</div>

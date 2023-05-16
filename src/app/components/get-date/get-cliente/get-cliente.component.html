@@ -1,0 +1,14 @@
+<div class="container">
+    <form [formGroup]="form" class="m-5" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email del cliente</label>
+            <select name="email" formControlName="email" id="email" class="form-select">
+                <option value="">Selecciona un email</option>
+                <option *ngFor="let cliente of clientes" [value]="cliente.email">
+                    {{cliente.email}}
+                </option>
+            </select>
+            <button type="submit" class="btn btn-primary mt-3" [disabled]="form.invalid">Buscar</button>
+        </div>
+    </form>
+</div>

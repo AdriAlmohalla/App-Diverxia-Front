@@ -1,0 +1,25 @@
+<div *ngIf="mostrarDiv">
+  <app-form-cit (enviarObjeto)="recibirDatos($event)"></app-form-cit>
+</div>
+<div class="container" *ngIf="!mostrarDiv">
+  <app-get-terapeuta (enviarObjeto)="recibirDatosTerapia($event)"></app-get-terapeuta>
+</div>
+
+<div class="container" *ngIf="!mostrarDiv">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="m-5">
+    <div class="form-group mb-3">
+      <label for="horarioSeleccionado">Selecciona un horario:</label>
+      <div class="d-flex flex-wrap">
+        <button class="btn-horario" *ngFor="let horario of horariosDisponibles" (click)="seleccionarHorario(horario)"
+          [ngClass]="{'btn-secondary': horarioActual === horario.id, 'btn-outline-secondary': horarioActual !== horario.id}"
+          type="button" class="btn m-3">
+          {{formatoHora(horario.hora_inicio)}}
+        </button>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid || isLoading">
+      <span *ngIf="!isLoading">Reservar cita</span>
+      <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    </button>
+  </form>
+</div>

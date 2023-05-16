@@ -1,0 +1,16 @@
+input.btn-primary {
+  background-color: #d7c1ce;
+  border: none;
+}
+
+input.btn-primary:hover {
+  background-color: #c5914d;
+}
+
+input.btn-default {
+  background-color: #c5914d;
+}
+
+input {
+  margin: 0.3rem;
+}

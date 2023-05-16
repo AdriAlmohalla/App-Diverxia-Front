@@ -1,0 +1,45 @@
+<div class="center">
+  <div class="cita-detalle">
+    <h2 class="mb-3">Detalles de la cita</h2>
+    <p class="mb-1"><strong>Nombre:</strong> {{cita.nombre}} {{cita.apellidos}}</p>
+    <p class="mb-1"><strong>Fecha:</strong> {{cita.dia | date:'dd/MM/yyyy'}}</p>
+    <p class="mb-1"><strong>Hora inicio:</strong> {{cita.hora_inicio}}</p>
+    <p class="mb-1"><strong>Hora final:</strong> {{cita.hora_final}}</p>
+
+    <h3 class="mt-3 mb-2">Información del terapeuta</h3>
+    <p class="mb-1"><strong>Nombre:</strong> {{cita.terapeuta_nombre}} {{cita.terapeuta_apellidos}}</p>
+    <p class="mb-1"><strong>Terapia:</strong> {{cita.nombre_terapia}}</p>
+    <p class="mb-3"><strong>Email:</strong> {{cita.terapeuta_email}}</p>
+    <div class="flex">
+      <button class="btn" (click)="openCancelarCitaModal()">Cancelar cita</button>
+      <button class="btn" [routerLink]="['/calendarioCitas']">Volver</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #cancelarCitaModal let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Cancelar cita</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="modal.close('Cerrado desde la ventana')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      ¿Estás seguro que quieres cancelar la cita?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn" data-dismiss="modal" (click)="modal.close('No')">No</button>
+      <ng-container *ngIf="!isLoading; else loading">
+        <button type="button" class="btn" (click)="confirmarCancelarCita(modal)">Si</button>
+      </ng-container>
+      <ng-template #loading>
+        <button type="button" class="btn" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Cargando...
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>

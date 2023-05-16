@@ -1,0 +1,17 @@
+<form class="m-5" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="terapia" class="form-label">Selecciona tu terapeuta y terapia:</label>
+    <select formControlName="id_terapeuta" class="form-select" name="terapia" id="terapia">
+      <option value="">Selecciona una opción</option>
+      <option *ngFor="let objeto of terapeutasYTerapia" [value]="objeto.id">
+        {{ objeto.nombre }} {{ objeto.apellidos }} - {{ objeto.nombre_terapia }}
+      </option>
+
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="fechaDia" class="form-label">Selecciona un dia para la fecha:</label>
+    <input class="form-control" type="date" name="fechaDia" id="fechaDia" formControlName="dia">
+  </div>
+  <input class="btn btn-primary mb-2" type="submit" value="Ver horarios disponibles" [disabled]="formulario.invalid">
+</form>

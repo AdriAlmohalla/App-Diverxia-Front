@@ -1,0 +1,18 @@
+<div class="container">
+  <form class="m-5" [formGroup]="formulario">
+    <div class="mb-3">
+      <label for="terapia" class="form-label">Selecciona tu terapeuta y terapia:</label>
+      <select formControlName="id_terapeuta" class="form-select" name="terapia" id="terapia"
+        (change)="onTerapeutaChange($event)">
+        <option value="">Selecciona una opción</option>
+        <option *ngFor="let objeto of terapeutasYTerapia" [value]="objeto.id">
+          {{ objeto.nombre }} {{ objeto.apellidos }} - {{ objeto.nombre_terapia }}
+        </option>
+      </select>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="dates">
+  <app-calendario [citas]="dates"></app-calendario>
+</div>

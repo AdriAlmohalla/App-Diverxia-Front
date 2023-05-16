@@ -1,0 +1,11 @@
+<ng-container *ngIf="usersService.isUser()">
+  <app-calendario-citas-cliente></app-calendario-citas-cliente>
+</ng-container>
+
+<ng-container *ngIf="usersService.isWorker()">
+  <app-calendario-citas-terapeuta></app-calendario-citas-terapeuta>
+</ng-container>
+
+<ng-container *ngIf="usersService.isAdmin()">
+  <app-calendario-citas></app-calendario-citas>
+</ng-container>

@@ -1,0 +1,36 @@
+<div class="container">
+
+
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="btn-group">
+        <button class="btn btn-primary" (click)="cambiarFecha(-1)">Anterior</button>
+        <button class="btn btn-primary" (click)="irHoy()">Hoy</button>
+        <button class="btn btn-primary" (click)="cambiarFecha(1)">Siguiente</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3 class="text-center mb-4">{{ obtenerTitulo(viewDate) }}</h3>
+    </div>
+    <div class="col-md-4">
+      <div class="btn-group">
+        <button class="btn btn-secondary" (click)="cambiarVista('day')">Día</button>
+        <button class="btn btn-secondary" (click)="cambiarVista('week')">Semana</button>
+        <button class="btn btn-secondary" (click)="cambiarVista('month')">Mes</button>
+      </div>
+    </div>
+  </div>
+
+  <div [ngSwitch]="vistaActual" class="mt-4">
+    <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="citasToEvents(citas)"
+      [hourSegments]="2" [dayStartHour]="8" [dayEndHour]="22"
+      (eventClicked)="citaClicked($event.event)"></mwl-calendar-day-view>
+
+    <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="citasToEvents(citas)"
+      [hourSegments]="2" [dayStartHour]="8" [dayEndHour]="22" [weekStartsOn]="1"
+      (eventClicked)="citaClicked($event.event)"></mwl-calendar-week-view>
+
+    <mwl-calendar-month-view *ngSwitchDefault [viewDate]="viewDate" [events]="citasToEvents(citas)" [weekStartsOn]="1"
+      (eventClicked)="citaClicked($event.event)"></mwl-calendar-month-view>
+  </div>
+</div>

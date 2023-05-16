@@ -1,0 +1,21 @@
+button.btn-primary,
+button.btn-secondary {
+  background-color: #d7c1ce;
+  border: none;
+}
+
+button.btn-primary:hover {
+  background-color: #c5914d;
+}
+
+button.btn-default {
+  background-color: #c5914d;
+}
+
+button {
+  margin: 0.3rem;
+}
+
+.btn-secondary {
+  color: #c5914d;
+}
